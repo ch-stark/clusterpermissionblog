@@ -21,6 +21,41 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 
 ---
 
+### ClusterPermission in Action: Real-World Use Cases
+
+ClusterPermission is already being used to power important features in RHACM:
+
+Application Lifecycle (Push Model): While RHACM's ApplicationSet often uses a "pull" model (where applications pull configurations from Git), there are times when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Accounts on those managed clusters have exactly the right permissions to handle these push operations, without being over-privileged.
+
+Virtual Machine Actions (Kubevirt Integration): This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
+
+Here’s that VM actions example for a cluster called aro-central:
+
+```yaml
+apiVersion: rbac.open-cluster-management.io/v1alpha1
+kind: ClusterPermission
+metadata:
+  name: vm-actions
+  namespace: aro-central # Target managed cluster
+spec:
+  clusterRole:
+    rules:
+      - apiGroups:
+          - subresources.kubevirt.io
+        resources:
+          - virtualmachines/start
+          - virtualmachines/stop
+          - virtualmachines/restart
+          - virtualmachineinstances/pause
+          - virtualmachineinstances/unpause
+        verbs:
+          - update
+  clusterRoleBinding:
+    subject:
+      kind: ServiceAccount
+      name: vm-actor
+      namespace: open-cluster-management-agent-addon # The Service Account performing VM a
+---
 ## The Evolution: Newer, More Flexible ClusterPermission
 
 Recent updates have made the ClusterPermission resource much more versatile:
@@ -87,41 +122,10 @@ spec:
 ---
 
 
-ClusterPermission in Action: Real-World Use Cases
 
-The improved ClusterPermission isn't just theory; it's already being used to power important features in RHACM:
 
-Application Lifecycle (Push Model): While RHACM's ApplicationSet often uses a "pull" model (where applications pull configurations from Git), there are times when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Accounts on those managed clusters have exactly the right permissions to handle these push operations, without being over-privileged.
 
-Virtual Machine Actions (Kubevirt Integration): This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
 
-Here’s that VM actions example for a cluster called aro-central:
-
-```yaml
-apiVersion: rbac.open-cluster-management.io/v1alpha1
-kind: ClusterPermission
-metadata:
-  name: vm-actions
-  namespace: aro-central # Target managed cluster
-spec:
-  clusterRole:
-    rules:
-      - apiGroups:
-          - subresources.kubevirt.io
-        resources:
-          - virtualmachines/start
-          - virtualmachines/stop
-          - virtualmachines/restart
-          - virtualmachineinstances/pause
-          - virtualmachineinstances/unpause
-        verbs:
-          - update
-  clusterRoleBinding:
-    subject:
-      kind: ServiceAccount
-      name: vm-actor
-      namespace: open-cluster-management-agent-addon # The Service Account performing VM a
----
 
 ## Beyond VMs: The Future of Fine-Grained Control
 
