@@ -122,14 +122,9 @@ spec:
 ---
 
 
-
-
-
-
-
 ## Beyond VMs: The Future of Fine-Grained Control
 
-The success with Kubevirt and application lifecycle management points to an exciting future for ClusterPermission. We expect it to be used in many more situations where specific, delegated permissions are needed for:
+We expect ClusterPermission to be used in many more situations where specific, delegated permissions are needed for:
 
 * **Data Plane Operators:** Giving an operator managing databases or message queues on a managed cluster just the permissions it needs.
 * **Observability Agents:** Limiting monitoring agents to view only specific resource types or namespaces.
