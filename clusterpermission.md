@@ -42,7 +42,6 @@ metadata:
   name: vm-admin-access
   namespace: my-prod-cluster # This specifies the target managed cluster
 spec:
-  # Notice: No 'clusterRole' rules are defined here!
   clusterRoleBinding:
     name: vm-admin-crb
     roleRef:
@@ -56,13 +55,13 @@ spec:
 ---
 
 
-Bind to Multiple Users, Groups, or Service Accounts
+###Bind to Multiple Users, Groups, or Service Accounts
+
 A single ClusterPermission RoleBinding or ClusterRoleBinding can now connect a role to multiple subjects at once. This means you don't need separate ClusterPermission objects or duplicate bindings when several users, groups, or Service Accounts need the same set of permissions.
 
 Take a look at this example that binds one role to a Service Account, a user, and a group:
 
-YAML
-
+```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
 kind: ClusterPermission
 metadata:
@@ -89,6 +88,7 @@ spec:
 
 
 ClusterPermission in Action: Real-World Use Cases
+
 The improved ClusterPermission isn't just theory; it's already being used to power important features in RHACM:
 
 Application Lifecycle (Push Model): While RHACM's ApplicationSet often uses a "pull" model (where applications pull configurations from Git), there are times when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Accounts on those managed clusters have exactly the right permissions to handle these push operations, without being over-privileged.
@@ -97,8 +97,7 @@ Virtual Machine Actions (Kubevirt Integration): This is a prime example of Clust
 
 Here’s that VM actions example for a cluster called aro-central:
 
-YAML
-
+```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
 kind: ClusterPermission
 metadata:
@@ -122,7 +121,6 @@ spec:
       kind: ServiceAccount
       name: vm-actor
       namespace: open-cluster-management-agent-addon # The Service Account performing VM a
-
 ---
 
 ## Beyond VMs: The Future of Fine-Grained Control
