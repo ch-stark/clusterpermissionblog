@@ -53,7 +53,7 @@ spec:
       kind: ServiceAccount
       name: vm-actor
       namespace: open-cluster-management-agent-addon # The Service Account performing VM a
----
+```
 
 ## The Evolution: Newer, More Flexible ClusterPermission
 
@@ -86,7 +86,7 @@ spec:
       kind: ServiceAccount
       name: vm-automation-sa
       namespace: vm-ops
----
+```
 
 ### Bind to Multiple Users, Groups, or Service Accounts
 
@@ -117,7 +117,7 @@ spec:
       - apiGroup: rbac.authorization.k8s.io
         kind: Group
         name: app-team-a
----
+```
 
 
 ## Beyond VMs: The Future of Fine-Grained Control
