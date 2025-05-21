@@ -69,7 +69,7 @@ Before, if you wanted to use ClusterPermission, you had to fully define every ru
 
 Here's an example of binding to an existing Kubevirt.io ClusterRole:
 
----
+```
 apiVersion: rbac.open-cluster-management.io/v1alpha1
 kind: ClusterPermission
 metadata:
