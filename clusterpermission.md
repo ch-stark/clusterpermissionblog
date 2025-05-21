@@ -56,6 +56,7 @@ spec:
       name: vm-actor
       namespace: open-cluster-management-agent-addon # The Service Account performing VM a
 ---
+
 ## The Evolution: Newer, More Flexible ClusterPermission
 
 Recent updates have made the ClusterPermission resource much more versatile:
