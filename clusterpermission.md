@@ -53,6 +53,8 @@ spec:
       kind: ServiceAccount
       name: vm-automation-sa
       namespace: vm-ops
+---
+
 Bind to Multiple Users, Groups, or Service Accounts
 A single ClusterPermission RoleBinding or ClusterRoleBinding can now connect a role to multiple subjects at once. This means you don't need separate ClusterPermission objects or duplicate bindings when several users, groups, or Service Accounts need the same set of permissions.
 
@@ -82,6 +84,8 @@ spec:
       - apiGroup: rbac.authorization.k8s.io
         kind: Group
         name: app-team-a
+
+
 ClusterPermission in Action: Real-World Use Cases
 The improved ClusterPermission isn't just theory; it's already being used to power important features in RHACM:
 
