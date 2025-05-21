@@ -4,7 +4,6 @@ Managing Kubernetes across many clusters can quickly get complicated. Red Hat Ad
 
 Initially, ClusterPermission might have seemed like just another option for permissions. But with recent improvements and its growing use in core RHACM features, it's becoming essential for managing **Role-Based Access Control (RBAC)** across multiple clusters with pinpoint accuracy.
 
----
 
 ## Why ClusterPermission is a Game Changer for Multi-Cluster RBAC
 
@@ -19,7 +18,6 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 * **Least Privilege:** It helps you give applications or components on your managed clusters only the permissions they truly need, boosting your security.
 * **Targeted Scope:** You can apply permissions to specific namespaces or make them apply across the entire cluster.
 
----
 
 ### ClusterPermission in Action: Real-World Use Cases
 
@@ -130,16 +128,12 @@ We expect ClusterPermission to be used in many more situations where specific, d
 * **Observability Agents:** Limiting monitoring agents to view only specific resource types or namespaces.
 * **Custom Automation:** Empowering your own scripts or controllers with very precise access for their tasks.
 
----
-
 ## ClusterPermission and the Aggregated API Server: A Powerful Duo
 
 The rise of ClusterPermission is deeply connected to the aggregated API server in RHACM. This aggregated API server acts as a central hub where all permissions from your managed clusters (including those defined by ClusterPermission) are collected and unified. This means:
 
 * **Smarter Search Results:** Imagine a user who only has access to `namespace-A` on `cluster1`. Thanks to ClusterPermission and the aggregated API, when they use the RHACM search, they will only see resources from `namespace-A` on `cluster1`, correctly filtered by their precise permissions. This is a big step up from just seeing everything on a cluster.
 * **Fine-Grained RBAC for Hosted Control Planes (HCP):** If you're using HCP to manage your OpenShift clusters, ClusterPermission is essential. It allows you to enforce granular RBAC within those hosted clusters, even when users are interacting through the RHACM hub. For example, you can restrict a user's access to specific namespaces on a child cluster even if they have broader permissions on the HCP host cluster.
-
----
 
 ## Conclusion
 
