@@ -27,13 +27,13 @@ Recent updates have made the ClusterPermission resource much more versatile:
 
 ### Reference Existing Roles
 
-Before, if you wanted to use ClusterPermission, you had to fully define every rule for the `Role` or `ClusterRole` you were creating. Now, you can simply **reference existing Roles or ClusterRoles** on the managed cluster. This is a huge win because it lets you:
+Before, if you wanted to use ClusterPermission, you had to fully define every rule for the Role or ClusterRole you were creating. Now, you can simply **reference existing Roles or ClusterRoles** on the managed cluster. This is a huge win because it lets you:
 
-* **Use Built-in Roles:** Easily link to standard Kubernetes roles (like `admin`, `edit`, `view`) or specialized roles provided by other operators (like `Kubevirt.io`'s VM management roles).
+* **Use Built-in Roles:** Easily link to standard Kubernetes roles (like `admin`, `edit`, `view`) or specialized roles provided by other operators (like Kubevirt.io's VM management roles).
 * **Simplify Definitions:** No more duplicating long lists of API groups, resources, and verbs. This makes your YAML cleaner and reduces errors.
 * **Integrate Seamlessly:** It’s easier to work with existing RBAC setups on your clusters.
 
-Here's an example of binding to an existing `Kubevirt.io` `ClusterRole`:
+Here's an example of binding to an existing Kubevirt.io ClusterRole:
 
 ```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
