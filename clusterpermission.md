@@ -69,19 +69,19 @@ Before, if you wanted to use ClusterPermission, you had to fully define every ru
 
 Here's an example of binding to an existing Kubevirt.io ClusterRole:
 
-```yaml
+---
 apiVersion: rbac.open-cluster-management.io/v1alpha1
 kind: ClusterPermission
 metadata:
-  name: vm-admin-access
-  namespace: my-prod-cluster # This specifies the target managed cluster
+  name: vm-admin-access # Make sure this is a regular space before 'name'
+  namespace: my-prod-cluster # Make sure this is a regular space before 'namespace'
 spec:
   clusterRoleBinding:
     name: vm-admin-crb
     roleRef:
-      apiGroup: rbac.authorization.k8s.io
+      apiGroup: rbac.k8s.io
       kind: ClusterRole
-      name: kubevirt.io:admin # References an existing ClusterRole on the managed cluster
+      name: kubevirt.io:admin
     subject:
       kind: ServiceAccount
       name: vm-automation-sa
