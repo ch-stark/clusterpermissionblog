@@ -119,6 +119,66 @@ spec:
         kind: Group
         name: app-team-a
 ```
+See also this example related to OpenShift Virtualization
+
+′′′
+apiVersion: rbac.open-cluster-management.io/v1alpha1
+kind: ClusterPermission
+metadata:
+  name: kubevirt-edit
+  namespace: jg-test-1
+spec:
+  roleBindings:
+  - namespace: kubevirt-workspace-1
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: kubevirt.io:view
+    subjects:
+    - kind: User
+      name: Bob
+      apiGroup: rbac.authorization.k8s.io
+    - kind: User
+      name: Kike
+      apiGroup: rbac.authorization.k8s.io      
+  - namespace: kubevirt-workspace-1
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: kubevirt.io:edit
+    subjects:
+    - kind: User
+      name: Bob
+      apiGroup: rbac.authorization.k8s.io
+    - kind: User
+      name: Kike
+      apiGroup: rbac.authorization.k8s.io      
+  - namespace: kubevirt-workspace-2
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: kubevirt.io:view
+    subjects:
+    - kind: User
+      name: Bob
+      apiGroup: rbac.authorization.k8s.io
+    - kind: User
+      name: Kike
+      apiGroup: rbac.authorization.k8s.io      
+  - namespace: kubevirt-workspace-2
+    roleRef:
+      apiGroup: rbac.authorization.k8s.io
+      kind: Role
+      name: kubevirt.io:edit
+    subjects:
+    - kind: User
+      name: Bob
+      apiGroup: rbac.authorization.k8s.io
+    - kind: User
+      name: Kike
+      apiGroup: rbac.authorization.k8s.io
+′′′
+
 
 ## ClusterPermission and the Aggregated API Server
 
