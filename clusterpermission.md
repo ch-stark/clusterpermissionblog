@@ -1,4 +1,4 @@
-# Unlock Precise Control: How ClusterPermission is evolving in RHACM
+# How ClusterPermission is evolving in RHACM
 
 Managing Kubernetes across many clusters can quickly get complicated. Red Hat Advanced Cluster Management (RHACM) makes this easier by giving you one central place to control everything. A key part of this control, and one that's getting even more powerful, is the **ClusterPermission** resource.
 
@@ -28,7 +28,7 @@ Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup
 Virtual Machine Actions (Kubevirt Integration):
 This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
 
-Here’s that VM actions example for a cluster (called aro-central):
+Here’s that VM actions example for a cluster (in this case aro-central):
 
 ```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
@@ -56,7 +56,7 @@ spec:
       namespace: open-cluster-management-agent-addon # The Service Account performing VM a
 ```
 
-## The Evolution: Newer, More Flexible ClusterPermission
+## The Evolution: More Flexible ClusterPermission
 
 Recent updates have made the ClusterPermission resource much more versatile:
 
@@ -122,7 +122,7 @@ spec:
 
 ## ClusterPermission and the Aggregated API Server: A Powerful Duo
 
-The increased importance of ClusterPermission is deeply connected to the aggregated API server in RHACM. This aggregated API server acts as a central hub where all permissions from your managed clusters (including those defined by ClusterPermission) are collected and unified. This means:
+The increased importance of ClusterPermission is deeply connected to the aggregated API server in RHACM. This aggregated API server acts as a central hub where all permissions from your managed clusters (including those defined by ClusterPermission) are collected and unified. 
 
 ## Beyond VMs: The Future of Fine-Grained Control
 
