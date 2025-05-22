@@ -121,7 +121,7 @@ spec:
 ```
 See also this example related to OpenShift Virtualization
 
-′′′
+```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
 kind: ClusterPermission
 metadata:
@@ -177,7 +177,7 @@ spec:
     - kind: User
       name: Kike
       apiGroup: rbac.authorization.k8s.io
-′′′
+```
 
 
 ## ClusterPermission and the Aggregated API Server
