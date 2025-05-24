@@ -26,6 +26,35 @@ ClusterPermission is already being used to power important features in RHACM:
 
 Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup uses a "pull" model, there are scenarios when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Account on those managed clusters have exactly the right permissions to handle its operations, without being over-privileged.
 
+```yaml
+apiVersion: rbac.open-cluster-management.io/v1alpha1
+kind: ClusterPermission
+metadata:
+  name: clusterpermission-msa-subject-sample
+  namespace: cluster1
+spec:
+  roles:
+  - namespace: mortgage
+    rules:
+    - apiGroups: ["apps"]
+      resources: ["deployments"]
+      verbs: ["get", "list", "create", "update", "delete", "patch"]  
+  roleBindings:
+  - namespace: mortgage
+    roleRef:
+      kind: Role
+    subject:
+      apiGroup: authentication.open-cluster-management.io
+      kind: ManagedServiceAccount
+      name: managed-sa-sample
+  clusterRoleBinding:
+    subject:
+      apiGroup: authentication.open-cluster-management.io
+      kind: ManagedServiceAccount
+      name: managed-sa-sample
+```
+Note: Apart from the typical RBAC binding subject resources (Group, ServiceAccount, and User), ManagedServiceAccount can also serve as a subject. When the binding subject is a ManagedServiceAccount, the controller computes and generates RBAC resources based on the ServiceAccount managed by the ManagedServiceAccount.
+
 Virtual Machine Actions (Kubevirt Integration):
 This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
 
