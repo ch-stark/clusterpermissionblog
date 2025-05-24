@@ -53,7 +53,7 @@ spec:
       kind: ManagedServiceAccount
       name: managed-sa-sample
 ```
-Note: Apart from the typical RBAC binding subject resources (Group, ServiceAccount, and User), ManagedServiceAccount can also serve as a subject. When the binding subject is a ManagedServiceAccount, the controller computes and generates RBAC resources based on the ServiceAccount managed by the ManagedServiceAccount.
+!Note: Apart from the typical RBAC binding subject resources (Group, ServiceAccount, and User), ManagedServiceAccount can also serve as a subject. When the binding subject is a ManagedServiceAccount, the controller computes and generates RBAC resources based on the ServiceAccount managed by the ManagedServiceAccount.
 
 Virtual Machine Actions (Kubevirt Integration):
 This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
