@@ -23,7 +23,7 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 
 ClusterPermission is already being used to power important features in RHACM:
 
-Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup uses a "pull" model, there are scenarios when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Accounts on those managed clusters have exactly the right permissions to handle these push operations, without being over-privileged.
+Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup uses a "pull" model, there are scenarios when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Account on those managed clusters have exactly the right permissions to handle its operations, without being over-privileged.
 
 Virtual Machine Actions (Kubevirt Integration):
 This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
