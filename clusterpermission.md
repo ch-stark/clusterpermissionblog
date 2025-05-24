@@ -1,6 +1,7 @@
 # How ClusterPermission is evolving in RHACM
 
-Managing Kubernetes across many clusters can quickly get complicated. Red Hat Advanced Cluster Management (RHACM) makes this easier by giving you one central place to control everything. A key part of this control is the **ClusterPermission** resource. You can fine its upstream repository [here](https://github.com/stolostron/cluster-permission)
+Managing Kubernetes across many clusters can quickly get complicated. Red Hat Advanced Cluster Management (RHACM) makes this easier by giving you one central place to control everything. A key part of this control is the **ClusterPermission** resource. You can fine its upstream repository [here](https://github.com/stolostron/cluster-permission).
+The ClusterPermission controller utilizes the ManifestWork API to ensure the creation, update, and removal of RBAC resources on each managed cluster. The ClusterPermission API safeguards these distributed RBAC resources against unintended modifications and removal.
 
 With recent improvements and its growing use in core RHACM feature  ClusterPermission is becoming essential for managing **Role-Based Access Control (RBAC)** across multiple clusters.
 
