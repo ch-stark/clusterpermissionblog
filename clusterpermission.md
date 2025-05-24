@@ -24,7 +24,7 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 
 ClusterPermission is already being used to power important features in RHACM:
 
-Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup uses a "pull" model, there are scenarios when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Account on those managed clusters have exactly the right permissions to handle its operations, without being over-privileged.
+Application Lifecycle (Push Model): While RHACM's ApplicationSet preferred setup uses a "pull model", there are scenarios when the hub needs to "push" resources directly to a managed cluster. ClusterPermission ensures that the Service Account on those managed clusters have exactly the right permissions to handle its operations, without being over-privileged.
 
 ```yaml
 apiVersion: rbac.open-cluster-management.io/v1alpha1
@@ -208,7 +208,6 @@ spec:
       name: Kike
       apiGroup: rbac.authorization.k8s.io
 ```
-
 
 ## ClusterPermission and the Aggregated API Server
 
