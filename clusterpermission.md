@@ -22,7 +22,7 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 
 ClusterPermission is already being used to power important features in RHACM:
 
-Application Lifecycle (Push Model): 
+!Application Lifecycle (Push Model): 
 
 While RHACM's ApplicationSet preferred setup uses a "pull model", there are scenarios when the hub needs to "push" resources directly to a managed cluster.
 **NOTE**: This is the default way ArgoCD/Gitops-Operator works.
