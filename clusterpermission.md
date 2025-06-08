@@ -52,6 +52,7 @@ spec:
       name: managed-sa-sample
 ```
 **NOTE**: Apart from the typical RBAC binding subject resources (Group, ServiceAccount, and User), ManagedServiceAccount can also serve as a subject. When the binding subject is a ManagedServiceAccount, the controller computes and generates RBAC resources based on the ServiceAccount managed by the ManagedServiceAccount (in the examples the ApplicationManager).
+**NOTE**: ClusterPermission is a resource which is only applied on the Hub (in the namespace of the Managed-Cluster it should be applied to).
 
 ### Virtual Machine Actions (Kubevirt Integration):
 
