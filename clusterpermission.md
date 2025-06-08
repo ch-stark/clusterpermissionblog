@@ -55,7 +55,8 @@ spec:
 ```
 **NOTE**: Apart from the typical RBAC binding subject resources (Group, ServiceAccount, and User), ManagedServiceAccount can also serve as a subject. When the binding subject is a ManagedServiceAccount, the controller computes and generates RBAC resources based on the ServiceAccount managed by the ManagedServiceAccount (in the examples the ApplicationManager).
 
-Virtual Machine Actions (Kubevirt Integration):
+### Virtual Machine Actions (Kubevirt Integration):
+
 This is a prime example of ClusterPermission's power. If you're managing Virtual Machines (VMs) and Virtual Machine Instances (VMIs) with Kubevirt through RHACM, ClusterPermission grants the precise permissions needed. For instance, it allows an automation Service Account to start, stop, restart, pause, or unpause VMs, without giving it broader admin access.
 
 Here’s that VM actions example for a cluster (in this case aro-central):
@@ -219,6 +220,10 @@ We expect ClusterPermission to be used in many more situations where specific, d
 
 * **Smarter Search Results:** Imagine a user who only has access to `namespace-A` on `cluster1`. Thanks to ClusterPermission and the aggregated API, when they use the RHACM search, they will only see resources from `namespace-A` on `cluster1`, correctly filtered by their precise permissions. This is a big step up from just seeing everything on a cluster.
 * **Fine-Grained RBAC for Hosted Control Planes (HCP):** If you're using HCP to manage your OpenShift clusters, ClusterPermission is essential. It allows you to enforce granular RBAC within those hosted clusters, even when users are interacting through the RHACM hub. For example, you can restrict a user's access to specific namespaces on a child cluster even if they have broader permissions on the HCP host cluster.
+
+RHACM will offer a UI to define and validate the ClusterPermissions.
+In the future the users will also coming from remote IDP (we might do something closely like GroupSyncOperator).
+
 
 ## Conclusion
 
