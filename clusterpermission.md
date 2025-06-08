@@ -212,6 +212,10 @@ spec:
 ## ClusterPermission and the Aggregated API Server
 
 The increased importance of ClusterPermission is deeply connected to the aggregated API server in RHACM. This aggregated API server acts as a central hub where all permissions from your managed clusters (including those defined by ClusterPermission) are collected and unified. 
+The Aggregated API Server on the Hub will be watching the ClusterPermission objects and summarize the results such that it can handle the RBAC API calls e.g. from RHACM Search feature.
+
+
+
 
 ## Beyond VMs: The Future of Fine-Grained Control
 
