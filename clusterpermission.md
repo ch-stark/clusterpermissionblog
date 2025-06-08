@@ -134,7 +134,7 @@ metadata:
   namespace: dev-cluster-01 # This specifies the target managed cluster
 spec:
   roleBindings:
-    - namespace: default
+    - namespace: app-dev
       roleRef:
         apiGroup: rbac.authorization.k8s.io
         kind: ClusterRole
