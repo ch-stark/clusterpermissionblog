@@ -17,8 +17,6 @@ What makes ClusterPermission so powerful for modern multi-cluster operations?
 * **Centralized Control:** Define your access rules once on the hub, and RHACM applies them to as many clusters as you need. This cuts down on manual work significantly.
 * **GitOps-Ready:** ClusterPermission objects are just YAML files. You can store them in Git, which means your access policies are version-controlled, auditable, and can be automated.
 * **Least Privilege:** It helps you give applications or components on your managed clusters only the permissions they truly need, boosting your security.
-* **Targeted Scope:** You can apply permissions to specific namespaces or make them apply across the entire cluster.
-
 
 ### ClusterPermission in Action: Real-World Use Cases
 
